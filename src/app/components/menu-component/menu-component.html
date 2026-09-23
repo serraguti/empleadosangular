@@ -7,12 +7,25 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
+          @if (empleado(); as dato){
+            <h2 style="color:blue">
+              {{dato.apellido}}
+            </h2>
+          }@else{
+            <h2 style="color:blue">
+              Sin empleado
+            </h2>
+          }
+          <h2 style="color:red">
+            {{contador()}}
+            {{_serviceSignal.contador()}}
+          </h2>
           <a class="nav-link active" aria-current="page" 
           [routerLink]="['/']">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active"  
-          [routerLink]="['/empleadosoficio']">Empleados oficio</a>
+          [routerLink]="['/empleadosoficio']">Oficios</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"  
@@ -30,7 +43,11 @@
           <button class="btn btn-outline-danger" (click)="logOutEmpleado()">
             Log out
           </button>
-        </li>               
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link"  
+          [routerLink]="['/signal']">Signal</a>
+        </li>                       
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown

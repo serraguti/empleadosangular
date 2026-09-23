@@ -1,6 +1,7 @@
-import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { ServiceEmpleados } from '../../services/service.empleados';
 import { Login } from '../../models/login';
+import { ServiceAuthEmpleado } from '../../services/service.auth.empleado';
 
 @Component({
   selector: 'app-login-empleado-component',
@@ -9,6 +10,8 @@ import { Login } from '../../models/login';
   templateUrl: './login-empleado-component.html',
 })
 export class LoginEmpleadoComponent {
+  //RECUPERAMOS EL SERVICIO
+  private _serviceAuth: ServiceAuthEmpleado = inject(ServiceAuthEmpleado);
   @ViewChild("cajausername") cajaUsuario!: ElementRef;
   @ViewChild("cajapassword") cajaPassword!: ElementRef;
   public mensaje!: string;
@@ -26,7 +29,7 @@ export class LoginEmpleadoComponent {
       next: (response) => {
         //CAPTURAMOS EL TOKEN MEDIANTE SU KEY response
         this.mensaje = response.response;
-        localStorage.setItem("TOKEN", response.response);
+        this._serviceAuth.logInEmpleado(response.response);
         this._cdr.detectChanges();
       },
       error: (error) => {

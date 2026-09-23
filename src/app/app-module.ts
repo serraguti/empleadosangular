@@ -12,6 +12,7 @@ import { LoginEmpleadoComponent } from './components/login-empleado-component/lo
 import { PerfilEmpleadoComponent } from './components/perfil-empleado-component/perfil-empleado-component';
 import { SubordinadosComponent } from './components/subordinados-component/subordinados-component';
 import { AuthGuard } from './guards/authguard';
+import { EjemploSignalComponent } from './components/ejemplo-signal-component/ejemplo-signal-component';
 
 @NgModule({
   declarations: [
@@ -22,10 +23,15 @@ import { AuthGuard } from './guards/authguard';
     LoginEmpleadoComponent,
     PerfilEmpleadoComponent,
     SubordinadosComponent,
+    EjemploSignalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()
-    , ServiceEmpleados],
+  providers: [
+    AuthGuard,
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient(),
+    ServiceEmpleados,
+  ],
   bootstrap: [App],
 })
 export class AppModule {}

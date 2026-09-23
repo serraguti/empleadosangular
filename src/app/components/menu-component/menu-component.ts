@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ServiceSignal } from '../../services/service.signal';
+import { ServiceAuthEmpleado } from '../../services/service.auth.empleado';
 
 @Component({
   selector: 'app-menu-component',
@@ -7,7 +9,13 @@ import { Component } from '@angular/core';
   templateUrl: './menu-component.html',
 })
 export class MenuComponent {
+  public _serviceSignal: ServiceSignal = inject(ServiceSignal);
+  public _serviceAuth: ServiceAuthEmpleado = inject(ServiceAuthEmpleado);
+  public contador = this._serviceSignal.contador;
+  //AQUI PODEMOS RECUPERAR EL EMPLEADO QUE SE HA VALIDADO
+  public empleado = this._serviceAuth.user;
+
   logOutEmpleado(): void{
-    localStorage.removeItem("TOKEN");
+    this._serviceAuth.logOutEmpleado();
   }
 }
