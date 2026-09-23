@@ -19,14 +19,10 @@ export class PerfilEmpleadoComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    if (localStorage.getItem("TOKEN") == null){
-      this._router.navigate(["/login"])
-    }else{
-      this._service.getPerfilEmpleado().subscribe(response => {
+    this._service.getPerfilEmpleado().subscribe(response => {
         console.log(response);
         this.empleado = response;
         this._cdr.detectChanges();
-      })
-    }
+      })    
   }
 }

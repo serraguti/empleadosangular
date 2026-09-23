@@ -5,13 +5,20 @@ import { EmpleadosOficioComponent } from './components/empleados-oficio-componen
 import { LoginEmpleadoComponent } from './components/login-empleado-component/login-empleado-component';
 import { PerfilEmpleadoComponent } from './components/perfil-empleado-component/perfil-empleado-component';
 import { SubordinadosComponent } from './components/subordinados-component/subordinados-component';
+import { AuthGuard } from './guards/authguard';
 
 const routes: Routes = [
   {path: "", component: HomeEmpleadosComponent},
   {path: "empleadosoficio", component: EmpleadosOficioComponent},
   {path: "login", component: LoginEmpleadoComponent},
-  {path: "perfil", component: PerfilEmpleadoComponent},
-  {path: "subordinados", component: SubordinadosComponent}
+  {path: "perfil"
+    , component: PerfilEmpleadoComponent
+    , canActivate: [AuthGuard]
+  },
+  {path: "subordinados"
+    , component: SubordinadosComponent
+    , canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
