@@ -8,13 +8,18 @@ import { EmpleadosOficioComponent } from './components/empleados-oficio-componen
 import { FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { ServiceEmpleados } from './services/service.empleados';
+import { LoginEmpleadoComponent } from './components/login-empleado-component/login-empleado-component';
 
 @NgModule({
-  declarations: [App, HomeEmpleadosComponent, MenuComponent, EmpleadosOficioComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [provideBrowserGlobalErrorListeners()
-    , provideHttpClient(), ServiceEmpleados
+  declarations: [
+    App,
+    HomeEmpleadosComponent,
+    MenuComponent,
+    EmpleadosOficioComponent,
+    LoginEmpleadoComponent,
   ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  providers: [provideBrowserGlobalErrorListeners(), provideHttpClient(), ServiceEmpleados],
   bootstrap: [App],
 })
 export class AppModule {}
