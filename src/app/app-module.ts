@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { ServiceEmpleados } from './services/service.empleados';
 import { LoginEmpleadoComponent } from './components/login-empleado-component/login-empleado-component';
+import { PerfilEmpleadoComponent } from './components/perfil-empleado-component/perfil-empleado-component';
+import { SubordinadosComponent } from './components/subordinados-component/subordinados-component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { LoginEmpleadoComponent } from './components/login-empleado-component/lo
     MenuComponent,
     EmpleadosOficioComponent,
     LoginEmpleadoComponent,
+    PerfilEmpleadoComponent,
+    SubordinadosComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient(), ServiceEmpleados],

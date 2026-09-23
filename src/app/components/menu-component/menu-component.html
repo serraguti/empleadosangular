@@ -16,8 +16,21 @@
         </li>
         <li class="nav-item">
           <a class="nav-link"  
+          [routerLink]="['/perfil']">Perfil</a>
+        </li>           
+        <li class="nav-item">
+          <a class="nav-link"  
+          [routerLink]="['/subordinados']">Subordinados</a>
+        </li>           
+        <li class="nav-item">
+          <a class="nav-link"  
           [routerLink]="['/login']">Log In</a>
-        </li>        
+        </li>    
+        <li class="nav-item">
+          <button class="btn btn-outline-danger" (click)="logOutEmpleado()">
+            Log out
+          </button>
+        </li>               
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown

@@ -6,9 +6,26 @@ import { environment } from "../../environments/environment.development";
 import { Login } from "../models/login";
 @Injectable()
 export class ServiceEmpleados {
-    public token: string;
-    constructor(private _http: HttpClient) {
-        this.token = "";
+    constructor(private _http: HttpClient) {}
+
+    getPerfilEmpleado(): Observable<Empleado>{
+        let request = "api/empleados/perfilempleado";
+        let url = environment.urlApiEmpleadosSecurity + request;
+        let token = localStorage.getItem("TOKEN");
+        //EN EL HEADER SIMPLEMENTE DEBEMOS ENVIAR Authorization: bearer token
+        let header = new HttpHeaders()
+            .set("Authorization", "bearer " + token);
+        return this._http.get<Empleado>(url, {headers: header});
+    }
+
+    getSubordinados(): Observable<Array<Empleado>> {
+        let request = "api/empleados/subordinados";
+        let url = environment.urlApiEmpleadosSecurity + request;
+        let token = localStorage.getItem("TOKEN");
+        //EN EL HEADER SIMPLEMENTE DEBEMOS ENVIAR Authorization: bearer token
+        let header = new HttpHeaders()
+            .set("Authorization", "bearer " + token);
+        return this._http.get<Array<Empleado>>(url, {headers: header});
     }
 
     getEmpleados(): Observable<Array<Empleado>> {

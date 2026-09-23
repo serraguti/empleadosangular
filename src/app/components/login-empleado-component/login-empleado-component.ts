@@ -26,7 +26,7 @@ export class LoginEmpleadoComponent {
       next: (response) => {
         //CAPTURAMOS EL TOKEN MEDIANTE SU KEY response
         this.mensaje = response.response;
-        this._service
+        localStorage.setItem("TOKEN", response.response);
         this._cdr.detectChanges();
       },
       error: (error) => {

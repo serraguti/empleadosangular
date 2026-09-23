@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PerfilEmpleadoComponent } from './perfil-empleado-component';
+
+describe('PerfilEmpleadoComponent', () => {
+  let component: PerfilEmpleadoComponent;
+  let fixture: ComponentFixture<PerfilEmpleadoComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [PerfilEmpleadoComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(PerfilEmpleadoComponent);
+    component = fixture.componentInstance;
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
